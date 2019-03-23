@@ -1,7 +1,7 @@
 var myObject;
 
 function startGame() {
-    myObject = new Object(30, 30, 640, 300);
+    myObject = new Object(35, 35, 500, 300);
     playZone.start();
 }
 
@@ -9,7 +9,7 @@ var playZone = {
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.height = 600;
-        this.canvas.width = 1280;
+        this.canvas.width = 1000;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateplayZone, 20);
@@ -65,19 +65,19 @@ function keymove(press){
     }
 }
 function moveUp() {
-    myObject.Yspeed = -3;
+    myObject.Yspeed = -5;
 }
 
 function moveDown() {
-    myObject.Yspeed = 3;
+    myObject.Yspeed = 5;
 }
 
 function moveLeft() {
-    myObject.Xspeed = -3;
+    myObject.Xspeed = -5;
 }
 
 function moveRight() {
-    myObject.Xspeed = 3;
+    myObject.Xspeed = 5;
 }
 function Stop() {
     myObject.Xspeed = 0;
