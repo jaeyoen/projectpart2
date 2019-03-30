@@ -1,7 +1,10 @@
 var myObject;
+var food1;
 
 function startGame() {
     myObject = new Object(35, 35, 500, 300);
+    food1 = new food(39,39,550,350);
+
     playZone.start();
 }
 
@@ -31,19 +34,52 @@ function Object(width, height, x, y) {
         ctx = playZone.context;
         ctx.fillStyle = "blue";
         ctx.fillRect(this.x, this.y, this.width, this.height);
-    }
+    };
     this.newPos = function() {
         this.x += this.Xspeed;
         this.y += this.Yspeed;
-    }
+    };
+
+}
+
+function food(width, height,x,y){
+    this.width = width;
+    this.height = height;
+    this.Xspeed = 0;
+    this.Yspeed = 0;
+    this.x = x;
+    this.y = y;
+
+    this.update1 = function() {
+        ctx = playZone.context;
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    };
+    this.newPos1 = function() {
+        this.x = this.Xspeed;
+        this.y = this.Yspeed;
+    };
+
+
 
 }
 
 function updateplayZone() {
     playZone.clear();
     myObject.newPos();
+    // checks for collision
     myObject.update();
+
+
+    food1.newPos1();
+    food1.update1();
+
+
+
+
 }
+
+// Movement Direction
 function keymove(press){
     var key=press.which||press.keyCode;
     switch(key){
@@ -64,6 +100,7 @@ function keymove(press){
             break;
     }
 }
+// Movement speed for block
 function moveUp() {
     myObject.Yspeed = -5;
 }
