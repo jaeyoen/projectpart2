@@ -22,6 +22,7 @@ var playZone = {
     }
 }
 
+
 function Object(width, height, x, y) {
     this.width = width;
     this.height = height;
