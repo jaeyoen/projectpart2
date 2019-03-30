@@ -56,23 +56,35 @@ function food(width, height,x,y){
         ctx.fillStyle = "yellow";
         ctx.fillRect(this.x, this.y, this.width, this.height);
     };
+    /*
     this.newPos1 = function() {
         this.x = this.Xspeed;
         this.y = this.Yspeed;
     };
+    */
+}
+
+function DetectCollision(){
 
 
-
+    if (myObject.x < food1.x + food1.width &&
+        myObject.x + myObject.width > food1.x &&
+        myObject.y < food1.y + food1.height &&
+        myObject.y + myObject.height > food1.y){
+        food1.x = Math.floor(Math.random()*(900 - 100)) + 100;
+        food1.y = Math.floor(Math.random()*(500 - 100)) + 100;
+    }
 }
 
 function updateplayZone() {
     playZone.clear();
     myObject.newPos();
     // checks for collision
+    DetectCollision();
     myObject.update();
 
 
-    food1.newPos1();
+    //food1.newPos1();
     food1.update1();
 
 
